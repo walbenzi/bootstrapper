@@ -18,10 +18,13 @@ module Bootstrapper
         end
       end
 
-      def install_script
+      def install_script(specified_location=nil)
+        if (specified_location.nil?)
+          specified_location="https://www.opscode.com/chef/install.sh"
+        end
         <<-SCRIPT
 set -x
-bash <(wget https://www.opscode.com/chef/install.sh -O -) -v #{install_version}
+bash <(wget #{specified_location} -O -) -v #{install_version}
 SCRIPT
       end
 

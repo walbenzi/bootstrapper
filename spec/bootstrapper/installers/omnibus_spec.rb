@@ -24,13 +24,22 @@ describe Bootstrapper::Installers::Omnibus do
       expect(installer.install_version).to eq("latest")
     end
 
-    it "generates an install script to run install.sh" do
+    it "generates a default install script to run install.sh" do
       expected_script=<<-EXPECTED
 set -x
 bash <(wget https://www.opscode.com/chef/install.sh -O -) -v latest
 EXPECTED
       expect(installer.install_script).to eq(expected_script)
     end
+
+    it "generates an install script to run install.sh from a location if specified" do
+      expected_script=<<-EXPECTED
+set -x
+bash <(wget https://www.albenzi.com/chef/install.sh -O -) -v latest
+EXPECTED
+      expect(installer.install_script).to eq(expected_script)
+    end
+
 
   end
 

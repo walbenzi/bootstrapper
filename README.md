@@ -95,6 +95,9 @@ entire bootstrap process must be performed by the resulting script, even
 though most users simply wish to customize the install process. By
 separating config generation, installation, and SSH session handling,
 each piece of functionality can be re-used or customized in isolation.
+* Allow users to specify alternate locations from which to get the 
+installer or packages.  This will allow users who have machines in limited 
+access networks to install more easily than is currently provided. 
 
 ## License:
 Apache 2 License.
